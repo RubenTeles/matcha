@@ -1,0 +1,14 @@
+
+docker run --name='my_sql_container' -d -p 3306:3306 -v /home/lucas/matcha/backend/db/dbFile:/var/lib/mysql mysql/mysql-server
+
+docker exec -it my_sql_container bash
+
+Go to the location of MySQL in the container cd /var/lib/mysql and connect to the database with mysql -u root -p
+
+Enter the initial password. For the next work, it is also necessary to restart default password ALTER USER 'root'@'localhost' IDENTIFIED BY 'newpassword';
+
+In the last step, you have to create a user for the connection.
+
+CREATE USER 'dbeaver'@'%' IDENTIFIED BY '123123';
+GRANT ALL PRIVILEGES ON *.* TO 'dbeaver'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
